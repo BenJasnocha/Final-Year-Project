@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+<html lang="en">
+{% block style %}
+
+{% endblock %}
+{% block content %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1"> <!--Viewport is used to make the page responsive-->
+    <title>Survival Plants Home</title>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script><!--Library for handling cookies-->
+    <script>
+    function closeDisclaimer(){
+    document.querySelector(".bg-modal").style.display = "none"
+    }
+    function allowCookies(){
+
+    }
+    </script>
+</head>
+
+<body>
+<header class="header">
+        <a href="Plant Index">Plant Index</a>
+        <a href="Identifier">Identifier</a>
+</header>
+
+    <div class="bg-modal">
+
+        <div id="modal-content">
+            <h1 id="titled">DISCLAIMER</h1>
+            <b>This is for education purposes only, always make sure you know without any uncertainty what a plant
+                is before using or eating it. Use multiple sources to identify a plant or consult an expert. Dont be a dumbass.</b>
+            <br>
+            <input type="checkbox" id="cookie_use" name="disclaimer_checkbox" value="false"> Allow use of cookies</input>
+            <br>
+            <button id="disclaimer" class="close" onclick="closeDisclaimer()">I UNDERSTAND</button>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+{% endblock %}

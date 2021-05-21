@@ -1,0 +1,22 @@
+from flask import Flask, render_template, url_for
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def main():
+	return render_template("Main.html")
+
+
+@app.route("/Identifier", methods=["GET", "POST"])
+def identifier():
+	return render_template("Identifier.html")
+
+
+@app.route("/Plant Index")
+def plant_index():
+	return render_template("Plant Index.html")
+
+
+if __name__ == "__main__":
+	app.run(debug=True)

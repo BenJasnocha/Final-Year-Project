@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1"> <!--Viewport is used to make the page responsive-->
+    <title>Survival Plants Identifier</title>
+    <link rel="stylesheet" href='{{ url_for("static", filename="css/styles.css")}}'  type ="text/css">
+</head>
+<body>
+    <header class="header">
+        <a href="/">Home</a>
+        <a href="Plant Index">Plant Index</a>
+    </header>
+
+    <form name="imageForm" action="/cgi-bin/CGI_Test.py" method="POST" enctype="multipart/form-data">
+        <input type="file" class="custom-file-input" name="inputFile" id="inpFile">
+        <div class="image-preview" id="imagePreview">
+          <img src="" alt="Image Preview" class="image-preview__image">
+           <span class="image-preview__default-text">ImagePreview</span>
+        </div>
+        <input type="submit" value="Help me identify!"/>
+    </form>
+
+    <!-- Image previewer-->:
+    <script>
+        const impFile = document.getElementById("inpFile");
+        const previewContainer = document.getElementById("imagePreview");
+        const previewImage = previewContainer.querySelector(".image-preview__image");
+        const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+
+        inpFile.addEventListener("change", function() {
+            const file = this.files[0];
+
+            if(file) {
+                const reader = new FileReader();
+
+                previewDefaultText.style.display = "none";
+                previewImage.style.display = "block";
+
+                reader.addEventListener("load", function() {
+                    console.log(this);
+                    previewImage.setAttribute("src", this.result);
+                });
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
+
+{% endblock %}
